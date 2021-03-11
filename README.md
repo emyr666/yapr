@@ -16,4 +16,13 @@ All of these have advantages and disadvantages. At CNAG in particular an in-hous
 
 This project may end up with an actual concrete piece of software or it may end up being vaporware. In any case, the act of looking at what's available, listing their strengths and weaknesses and listing the most important features required at CNAG is a valuable exercise in itself.
 
-= Feature Wishlist =
+## Feature Wishlist
+* A mechanism for trackng state that doesn't involve creating huge numbers of small files. This pattern causes problems on a filesystem such as lustre which is focussed on large files. Other options could be :
+  * A database - prefer postgresql using stored procedures in the database
+  * A message / work queue - rabbitmq / celery etc.
+  * A distributed key/value store e.g. riak, redis cluster
+* A web front end for at least providing stats / tracking information, not necessarily a full gui, possibly using rest api (like arvados)
+* Ability to play nicely with dmtcp checkpointing and slurm
+* Should be able to understand CWL or WDL, ideally CWL, WDL an Nextflow scripts
+* Should place jobs in the batch queue as soon as possible so they get time to accrue priority score based on waiting
+* Use of job dependencies in the batch system
